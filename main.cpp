@@ -56,6 +56,8 @@ void drawBoard(QGraphicsScene &scene) // we have a board layout for checkers. ne
     int xOffset = 30;
     int yOffset = 50;
 
+    int asciiNumOffset = 48, asciiCharOffset = 97;
+
     // These are virtual models of each of the "rings" in 9MM board. Rings adapted from CPU architecture
     QRect *ring3M = new QRect(xOffset, yOffset, 800, 800); //outer ring of board
     QRect *ring2M = new QRect(xOffset+100, yOffset+100, 600, 600); // middle ring of board
@@ -70,6 +72,7 @@ void drawBoard(QGraphicsScene &scene) // we have a board layout for checkers. ne
     scene.addItem(ring1);
 
     // generating places on the board based on these rings
+    //      doing a translation from ASCII does allow us to store it as a coord
     for(int i = 0; i <3; i++) // ring 3
     {
         for(int j = 0; j < 3; j++)
