@@ -33,7 +33,7 @@ private:
 
     QRectF boundingRect() const
     {
-        return QRectF(x, y, 75, 75);
+        return QRectF(x, y, 30, 30);
     }
 
 
