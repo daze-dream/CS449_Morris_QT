@@ -1,0 +1,21 @@
+    //Prints the black squares of the board
+//       for (char y = '1'; y <= '8'; y++){
+//           for (char x = 'a'; x <= 'h'; x++){
+//               if ((((y - 49) % 2) == 0) == (((x - 97) % 2) == 0))
+//               {  //XNOR to help with the diagonalness of the board
+//                   QGraphicsItem *boardSquareItem = new BoardGUI((x-97)*75 + 75, 525-(y-49)*75 + yOffset, std::make_pair(x, y));
+//                   scene.addItem(boardSquareItem);
+//               }
+//           }
+//       }
+//    for(int i = 0; i < 3; i++)// round 1
+//    {
+//        for(int j = 0; j < 3; j++)
+//        {
+//            if(i == 1 && j == 1) // cut out middle piece
+//                continue;
+//            QGraphicsItem *boardSquareItem = new BoardGUI(xOffset + (400 * i), yOffset + (400 * j), std::make_pair(0, 0));
+//            scene.addItem(boardSquareItem);
+//        }
+
+//    }

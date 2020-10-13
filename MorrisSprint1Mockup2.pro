@@ -10,16 +10,20 @@ CONFIG += c++11
 
 SOURCES += \
     boardgui.cpp \
+    location.cpp \
     main.cpp \
     mainwindow.cpp \
     morrisboardlogic.cpp \
-    piecegui.cpp
+    piecegui.cpp \
+    player.cpp
 
 HEADERS += \
     boardgui.h \
+    location.h \
     mainwindow.h \
     morrisboardlogic.h \
-    piecegui.h
+    piecegui.h \
+    player.h
 
 FORMS += \
     mainwindow.ui
@@ -28,3 +32,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    Scratch.txt
