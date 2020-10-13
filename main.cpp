@@ -10,6 +10,8 @@
 #include "morrisboardlogic.h"
 #include <QGraphicsRectItem>
 #include <QRect>
+#include <QLine>
+#include <QGraphicsLineItem>
 
 
 void drawBoard(QGraphicsScene &scene);
@@ -56,12 +58,18 @@ void drawBoard(QGraphicsScene &scene) // we have a board layout for checkers. ne
     int xOffset = 30;
     int yOffset = 50;
 
-    int asciiNumOffset = 48, asciiCharOffset = 97;
+    int asciiNumOffset = 48, asciiCharOffset = 97; // to be used when we go ASCII
+
+
 
     // These are virtual models of each of the "rings" in 9MM board. Rings adapted from CPU architecture
     QRect *ring3M = new QRect(xOffset, yOffset, 800, 800); //outer ring of board
     QRect *ring2M = new QRect(xOffset+100, yOffset+100, 600, 600); // middle ring of board
     QRect *ring1M = new QRect(xOffset+200, yOffset+200, 400, 400); // inner ring of board
+
+    QGraphicsTextItem * titleText = scene.addText(QString("9 MEN'S MORRIS ALPHA BUILD S-1-2"));
+        titleText->setFont(QFont("Arial", 30));
+        titleText->setPos(ring3M->x(), ring3M->y() - 150);
 
     // these are the actual drawn rings on screen
     QGraphicsRectItem *ring3 = new QGraphicsRectItem(xOffset, yOffset, 800, 800, nullptr);
@@ -70,6 +78,21 @@ void drawBoard(QGraphicsScene &scene) // we have a board layout for checkers. ne
     scene.addItem(ring2);
     QGraphicsRectItem *ring1 = new QGraphicsRectItem(xOffset+200, yOffset+200, 400, 400, nullptr);
     scene.addItem(ring1);
+
+    //Draw connecting lines
+    //left line
+    QGraphicsLineItem *line1 = new QGraphicsLineItem(ring3M->x() ,ring3M->y() + 400 , ring1M->x(), ring1M->y() + 200);
+    scene.addItem(line1);
+    //right line
+    QGraphicsLineItem *line2 = new QGraphicsLineItem(ring3M->x() + 800 ,ring3M->y() + 400 , ring1M->x() + 400, ring1M->y() + 200);
+    scene.addItem(line2);
+    //top line
+    QGraphicsLineItem *line3 = new QGraphicsLineItem(ring3M->x() + 400 ,ring3M->y(), ring1M->x() + 200, ring1M->y());
+    scene.addItem(line3);
+
+    QGraphicsLineItem *line4 = new QGraphicsLineItem(ring3M->x() + 400 ,ring3M->y() + 800, ring1M->x() + 200, ring1M->y() + 400);
+    scene.addItem(line4);
+
 
     // generating places on the board based on these rings
     //      doing a translation from ASCII does allow us to store it as a coord
@@ -105,6 +128,9 @@ void drawBoard(QGraphicsScene &scene) // we have a board layout for checkers. ne
             scene.addItem(loc);
         }
     }
+
+    //QGraphicsLineItem *line1 = new QGraphicsLineItem()
+
 
 
 
